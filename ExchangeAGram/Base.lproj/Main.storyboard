@@ -60,6 +60,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="acf-zb-KD7">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" id="1Tm-cD-XmC">
+                            <connections>
+                                <action selector="profileTapped:" destination="BYZ-38-t0r" id="gP3-9p-thl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="cZc-YY-sBm">
                             <connections>
                                 <action selector="snapBarButtonItemTapped:" destination="BYZ-38-t0r" id="KOL-ia-BQ0"/>
@@ -68,11 +73,87 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="QPY-tq-qEq" id="HBE-Lu-ODC"/>
+                        <segue destination="Hqd-dH-HfF" kind="show" identifier="profileSegue" id="KK4-IO-0rv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117" y="407"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="VNN-03-jmO">
+            <objects>
+                <viewController id="Hqd-dH-HfF" customClass="ProfileViewController" customModule="ExchangeAGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iTb-N1-XDp"/>
+                        <viewControllerLayoutGuide type="bottom" id="cAp-Is-VZh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gln-rx-EFl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Qt-sz-fV3">
+                                <rect key="frame" x="10" y="70" width="100" height="100"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-an-VMk">
+                                <rect key="frame" x="118" y="109" width="373" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5hN-EE-2jX" customClass="FBLoginView">
+                                <rect key="frame" x="50" y="400" width="200" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8V-2L-Vgy">
+                                <rect key="frame" x="10" y="220" width="140" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Map view">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapViewButtonTapped:" destination="Hqd-dH-HfF" eventType="touchUpInside" id="eGE-re-gSC"/>
+                                    <segue destination="Eo6-jA-YVr" kind="show" identifier="mapSegue" id="F0p-56-7fe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="fbLoginView" destination="5hN-EE-2jX" id="t2a-CH-kHI"/>
+                        <outlet property="nameLabel" destination="gI7-an-VMk" id="ZbL-79-Cgh"/>
+                        <outlet property="profileImageView" destination="7Qt-sz-fV3" id="rqp-Zr-Vie"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ew9-0B-e7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765" y="407"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="ucC-ah-gYW">
+            <objects>
+                <viewController id="Eo6-jA-YVr" customClass="MapViewController" customModule="ExchangeAGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4a1-Ad-eTx"/>
+                        <viewControllerLayoutGuide type="bottom" id="ih9-EA-cz5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zpt-wF-zTT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lzF-8S-271">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="lzF-8S-271" id="x3Z-Ai-JfS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mA9-Z7-ySw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2399" y="407"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w6I-TI-eV3">
